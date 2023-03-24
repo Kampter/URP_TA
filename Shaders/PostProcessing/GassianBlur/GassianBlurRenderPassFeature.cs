@@ -39,7 +39,7 @@ public class GassianBlurRenderPassFeature : ScriptableRendererFeature
             cmd.GetTemporaryRT(blurTex1.id, width, height, 0, FilterMode.Bilinear);
             cmd.GetTemporaryRT(blurTex2.id, width, height, 0, FilterMode.Bilinear);
             
-            cmd.SetGlobalFloat(_BlurSize, _blurSettings.blurSize);
+            cmd.SetGlobalFloat(_BlurSize, _blurSettings.blurSize); 
             
             cmd.Blit(source, blurTex1.id);
             for (int i = 0; i < _blurSettings.iteration; i++)
@@ -79,6 +79,7 @@ public class GassianBlurRenderPassFeature : ScriptableRendererFeature
         gassianBlurPass.renderPassEvent = blurSettings.passEvent;
         gassianBlurPass.setSource(renderer.cameraColorTarget);
     }
+
     public override void Create()
     {
         gassianBlurPass = new GassianBlurPass(blurSettings);
